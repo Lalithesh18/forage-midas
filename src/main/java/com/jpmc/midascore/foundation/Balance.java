@@ -1,28 +1,25 @@
 package com.jpmc.midascore.foundation;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class Balance {
-    private float amount;
 
-    public Balance() {
+    @Id
+    private String id;   // ← userId like "waldorf"
+
+    private double amount;
+
+    public String getId() {
+        return id;
     }
 
-    public Balance(float amount) {
-        this.amount = amount;
-    }
-
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    @Override
-    public String toString() {
-        return "Balance {amount=" + amount + "}";
     }
 }

@@ -23,6 +23,9 @@ public class TaskThreeTests {
     @Autowired
     private FileLoader fileLoader;
 
+    @Autowired
+    private WaldorfBalanceChecker waldorfBalanceChecker;
+
     @Test
     void task_three_verifier() throws InterruptedException {
         userPopulator.populate();
@@ -36,6 +39,9 @@ public class TaskThreeTests {
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");
+        float waldorfBalance = waldorfBalanceChecker.getWaldorfBalance();
+        logger.info("Waldorf's balance after all transactions: {}", waldorfBalance);
+        logger.info("Waldorf's balance (rounded down): {}", (int) Math.floor(waldorfBalance));
         logger.info("use your debugger to find out what waldorf's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
         while (true) {

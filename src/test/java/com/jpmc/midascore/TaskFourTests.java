@@ -23,6 +23,9 @@ public class TaskFourTests {
     @Autowired
     private FileLoader fileLoader;
 
+    @Autowired
+    private com.jpmc.midascore.repository.UserRepository userRepository;
+
     @Test
     void task_four_verifier() throws InterruptedException {
         userPopulator.populate();
@@ -36,6 +39,14 @@ public class TaskFourTests {
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");
+        var wilburOpt = userRepository.findByName("wilbur");
+        if (wilburOpt.isPresent()) {
+            float wilburBalance = wilburOpt.get().getBalance();
+            logger.info("Wilbur's balance after all transactions: {}", wilburBalance);
+            logger.info("Wilbur's balance (rounded down): {}", (int) Math.floor(wilburBalance));
+        } else {
+            logger.info("Wilbur user not found");
+        }
         logger.info("use your debugger to find out what wilbur's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
         while (true) {
