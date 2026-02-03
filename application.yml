@@ -29,3 +29,6 @@ spring:
   h2:
     console:
       enabled: true
+
+server:
+  port: 33400
